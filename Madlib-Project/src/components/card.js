@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import Input from './input';
+import Content from './content';
 
 class Card extends Component {
     constructor() {
@@ -22,14 +23,22 @@ class Card extends Component {
             adjectiveFour: '',
             nounThree: '',
             celebFour: '',
-            adjectiveFive: ''
+            adjectiveFive: '',
+            
+            contentVisible: false
         }
         
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
     
     handleInputChange(event){
         this.setState({[event.target.name]: event.target.value})
+    }
+    
+    handleFormSubmit(event){
+        event.preventDefault();
+        this.setState({contentVisible: !this.state.contentVisible})
     }
     
     render() {
@@ -53,11 +62,18 @@ class Card extends Component {
         ]
         
         return (
-            <div className="card">
+            <form onSubmit={this.handleFormSubmit} className="card">
+                <div className="card__inputs">
                 {
                     inputData.map(data => Input((data), this.handleInputChange))
                 }
+                </div>
                 
+                <button type="submit">{this.state.contentVisible ? 'Clear Form' : 'Generate Madlib'}</button>
+                
+                {
+                this.state.contentVisible ?                     <Content data={this.state}/> : ''
+                }
             
                 { /*Input('color', 'Color', this.state.color, this.handleInputChange)}
                 
@@ -66,7 +82,7 @@ class Card extends Component {
                 { Input('adjectiveOne', 'Adjective', this.state.adjectiveOne, this.handleInputChange)}
                 
                 { Input('celebOne', 'Celebrity', this.state.celebOne, this.handleInputChange)*/}
-            </div>
+            </form>
         );
         
     }
