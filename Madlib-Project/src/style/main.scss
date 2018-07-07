@@ -1,3 +1,23 @@
+@mixin button {
+    height: 50px;
+    width: 300px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+    color: white;
+    font-family: 'Montserrat';
+    font-size: 22px;
+    text-align: center;
+    justify-self: center;
+}
+
+.gray {
+    background:#b3b3b3;
+}
+
+.green {
+    background: #00cb79;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -69,28 +89,86 @@ body {
     display: grid;
     grid-template-rows: 1fr 50px;
     background-color: white;
+    
+    justify-items: center;
 
     &__inputs {
         display: grid;
-        grid-template-rows: repeat(4, 1fr); 
+        grid-template-rows: repeat(4, 27px); 
         grid-template-columns: repeat(4, 1fr); 
+        
+        grid-row-gap: 120px;
+        //grid-column-gap: 40px;
+        margin-top: 66px;
+        margin-left: 83px;
+        margin-right: 83px;
         
         justify-items: center;
         align-items: center;
+    }
+    
+    button:focus {
+        outline: none;
+    }
+    
+    &__generate {
+        background-color: #00cb79;
+        transform: translateY(-355px);
+        @include button;
+    }
+    
+    &__clear {
+        background-color: #45b0e5;
+        transform: translateY(50%);
+        @include button;
+    }
+    
+    &__content {
+        width: 1100px;
+        height: 297px;
+        background-color: #f2f2f2;
+        justify-self: center;
+        margin-bottom: 84px;
+        
+        font-family:'Montserrat';
+
+       
+        p {
+            padding: 50px 47px;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 29px;
+        }
+        
+        &__label {
+            height: 22px;
+            width: 22px;
+            background-color: black;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            line-height: 22px;
+            text-align: center;
+            //padding-top: 2px;
+            margin: 3px;
+            display: inline-block;
+        }
     }
 }
 
 .input {
     display: grid;
+    grid-template-columns: [number-s] 26px [number-e input-s] 1fr [input-e];
+
     font-family: 'Montserrat';
     text-align: center;
-
-    //grid-template-columns: 26px 1fr;
-    grid-template-columns: [number-s] 26px [number-e input-s] 1fr [title-e];
+    grid-column-gap: 8px;
     
+    height: 47px;
+
     &__title {
         grid-column: input-s/input-e;
-        border-top: 1px solid #b3b3b3;
+        
         color: #b3b3b3;
         font-size: 12px;
         font-weight: 300px;
@@ -103,18 +181,28 @@ body {
         font-size: 15px;
         text-align: center;
         font-weight: 600;
+        padding: 4px 0;
+        border-bottom: 1px solid #b3b3b3;  
+        transition: all .3s ease;
+        
+        &:focus {
+            outline: none;
+            border-bottom: 1px solid #00cb79;
+        }
     }
     
     &__number {
         grid-column: number-s/number-e;
-        background-color: #00cb79;
         color: white;
         font-size: 20px;
         text-align: center;
         line-height: 24px;
         padding-top: 1px;
         border-radius: 50%;
+        height: 26px;
+        width: 26px;
     }
     
 }
+
 
