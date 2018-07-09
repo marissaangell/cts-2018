@@ -7,6 +7,7 @@ class Content extends Component {
         this.count = 1;
     }
     
+    //built-in function
     componentWillReceiveProps() {
         this.count = 1;
     }
