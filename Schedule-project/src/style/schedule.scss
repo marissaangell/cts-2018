@@ -1,0 +1,26 @@
+.schedule {
+    display: grid;
+    grid-template-rows: 100px 1fr 1fr 1fr [progress-s] 75px [progress-e];
+    grid-row-gap: 22px;
+}
+
+.schedule-course {
+    
+}
+
+.progress-tracker {
+    grid-row: progress-s/progress-e;
+    
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 75px;
+    background-color: rgba(255, 255, 255, 0.3);
+    
+    &__title {
+        grid-column: 1/2;
+    }
+    
+    &__percentage {
+        grid-column: 2/3;
+    }
+}
