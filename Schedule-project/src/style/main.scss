@@ -1,0 +1,38 @@
+@import 'variables';
+@import 'library';
+
+.home {
+    height: 100vh;
+    width: 100vw;
+    
+    display: grid;
+    grid-template-columns: [library-s] 1fr 1fr [library-e schedule-s] 1fr [schedule-e];
+    grid-template-rows: 1fr;
+}
+
+.library {
+    grid-column: library-s/library-e;
+}
+
+.schedule {
+    grid-column: schedule-s/schedule-e;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.gradient {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(120deg, $color-purple 0, $color-light-blue 100%);
+    z-index: -10;
+}
+
+.arrow {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid black;
+    height: 0;
+    width: 0;
+}
