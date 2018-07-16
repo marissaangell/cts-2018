@@ -11,7 +11,7 @@ import AnimateHeight from 'react-animate-height';
 class LibraryCourse extends Component {
   
     constructor(props) {
-      super(props)
+      super(props);
       this.state = {
         status: true,
         height: 0
@@ -22,15 +22,16 @@ class LibraryCourse extends Component {
     handleCallback = function(status){
       let height = this.state.height == 0 ? 80 : 0;
       if (!status) {
-        document.getElementById('library-course').classList.add('library-course-selected');
+        document.getElementById(this.id).classList.add('library-course-selected');
       } else {
-        document.getElementById('library-course').classList.remove('library-course-selected');
+        document.getElementById(this.id).classList.remove('library-course-selected');
       }
       this.setState({status, height});
     }.bind(this);
   
+  
     render() {
-      this.id = `library-course-${this.props.id}`
+      this.id = `library-course-${this.props.id}`;
         return (
             <div id={this.id} className="library-course">
                 <div className="library-course__title-check">
