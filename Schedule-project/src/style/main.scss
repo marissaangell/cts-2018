@@ -9,10 +9,14 @@
     display: grid;
     grid-template-columns: [library-s] 1fr 1fr [library-e schedule-s] 1fr [schedule-e];
     grid-template-rows: 1fr;
+    
 }
 
 .library {
     grid-column: library-s/library-e;
+    padding-left: 100px;
+    padding-top: 100px;
+    margin-right: -50px;
 }
 
 .schedule {
@@ -20,6 +24,7 @@
     position: relative;
     height: 100%;
     width: 100%;
+    
 }
 
 .gradient {
@@ -33,7 +38,56 @@
 .arrow {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-bottom: 15px solid black;
+    border-top: 15px solid $color-blue;
     height: 0;
     width: 0;
+    
+    transition: all .3s ease;
+}
+
+.arrow-closed {
+    transform: rotate(180deg);
+}
+
+.action {
+    background: black;
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+    
+    border-radius: 16px;
+    position: relative;
+}
+
+.action {
+    &:after,
+    &:before {
+        content: '';
+        display: block;
+        background: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all .3s ease;
+    }
+    
+    &:before {
+        height: 1em;
+        width: .2em;
+    }
+    
+    &:after {
+        width: 1em;
+        height: .2em;
+    }
+}
+
+.action-remove {
+    &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:after {
+        transform: translate(-50%, -50%) rotate(-135deg);
+    }
 }
