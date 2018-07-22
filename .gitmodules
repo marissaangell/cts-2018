@@ -1,0 +1,3 @@
+[submodule "PropertyManagement-project/prop-management-server"]
+	path = PropertyManagement-project/prop-management-server
+	url = https://github.com/bottega-code-school/prop-management-server.git
